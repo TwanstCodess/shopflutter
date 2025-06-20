@@ -9,6 +9,11 @@ class Homepage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.indigoAccent,
         centerTitle: true,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadiusGeometry.vertical(
+            bottom: Radius.circular(20),
+          ),
+        ),
         title: Text("Home Page", style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold)),
       ),
 
