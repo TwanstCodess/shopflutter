@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'WidgetStyle.dart';
 
-class Homepage extends StatelessWidget {
+class Homepage extends StatefulWidget {
   const Homepage({super.key});
+
+  @override
+  State<Homepage> createState() => _HomepageState();
+}
+
+class _HomepageState extends State<Homepage> {
+  int selectedIndex = 0; // ✅ Declare it here, as a state variable
 
   @override
   Widget build(BuildContext context) {
@@ -12,9 +19,7 @@ class Homepage extends StatelessWidget {
           backgroundColor: Widgetstyle().primaryColor,
           centerTitle: true,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadiusGeometry.vertical(
-              bottom: Radius.circular(20),
-            ),
+            borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
           ),
           title: Text(
             "Lourd ",
@@ -25,7 +30,6 @@ class Homepage extends StatelessWidget {
             ),
           ),
         ),
-
         body: Column(
           children: [
             SizedBox(height: 20),
@@ -39,7 +43,6 @@ class Homepage extends StatelessWidget {
                     color: Widgetstyle().primaryColor,
                     borderRadius: BorderRadius.circular(15),
                   ),
-
                   child: IconButton(
                     onPressed: () {},
                     icon: Icon(Icons.menu, color: Colors.white),
@@ -56,10 +59,8 @@ class Homepage extends StatelessWidget {
                           Icons.search,
                           color: Widgetstyle().primaryColor,
                         ),
-
                         hintText: "گەڕان",
                         hintTextDirection: TextDirection.rtl,
-
                         filled: true,
                         fillColor: Color(0xfff0f0f0),
                         focusedBorder: OutlineInputBorder(
@@ -78,6 +79,40 @@ class Homepage extends StatelessWidget {
                 ),
                 SizedBox(width: 15),
               ],
+            ),
+            SizedBox(height: 8),
+            Container(
+              height: 35,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: List.generate(
+                  5,
+                  (index) => Padding(
+                    padding: const EdgeInsets.only(right: 3),
+                    child: ChoiceChip(
+                      label: Text('کۆمپانیای ${index + 1}'),
+                      selected: selectedIndex == index,
+                      selectedColor: Widgetstyle().primaryColor,
+                      side: BorderSide(
+                        color: selectedIndex == index
+                            ? Colors.blueAccent
+                            : Colors.transparent,
+                      ),
+                      backgroundColor: Widgetstyle().secondaryColor,
+                      labelStyle: TextStyle(
+                        color: selectedIndex == index
+                            ? Colors.white
+                            : Colors.black,
+                      ),
+                      onSelected: (value) {
+                        setState(() {
+                          selectedIndex = index;
+                        });
+                      },
+                    ),
+                  ),
+                ),
+              ),
             ),
           ],
         ),
