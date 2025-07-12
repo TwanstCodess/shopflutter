@@ -50,7 +50,16 @@ class Homepage extends StatelessWidget {
                   child: SizedBox(
                     height: 40,
                     child: TextField(
+                      textDirection: TextDirection.rtl,
                       decoration: InputDecoration(
+                        suffixIcon: Icon(
+                          Icons.search,
+                          color: Widgetstyle().primaryColor,
+                        ),
+
+                        hintText: "گەڕان",
+                        hintTextDirection: TextDirection.rtl,
+
                         filled: true,
                         fillColor: Color(0xfff0f0f0),
                         focusedBorder: OutlineInputBorder(
