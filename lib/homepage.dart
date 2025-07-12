@@ -90,6 +90,9 @@ class _HomepageState extends State<Homepage> {
                   (index) => Padding(
                     padding: const EdgeInsets.only(right: 3),
                     child: ChoiceChip(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
                       label: Text('کۆمپانیای ${index + 1}'),
                       selected: selectedIndex == index,
                       selectedColor: Widgetstyle().primaryColor,
